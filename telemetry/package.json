@@ -1,0 +1,17 @@
+{
+  "name": "telemetry",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^3.16.0",
+    "aws4fetch": "^1.0.17"
+  },
+  "private": true,
+  "scripts": {
+    "deploy": "yarn run -T wrangler publish",
+    "lint": "yarn run -T eslint . --ext .ts",
+    "lint-and-fix": "yarn run -T eslint . --ext .ts --fix",
+    "prettier-format": "yarn run -T prettier --config .prettierrc 'src/**/*.ts' --write",
+    "dev": "yarn run -T wrangler dev"
+  },
+  "type": "module"
+}

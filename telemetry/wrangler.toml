@@ -1,0 +1,25 @@
+name = "telemetry"
+compatibility_date = "2022-11-02"
+workers_dev = true
+main = "dist/index.mjs"
+
+[build]
+command = 'yarn run -T esbuild src/index.ts --bundle --outfile=dist/index.mjs --format=esm --conditions=worker'
+
+[[r2_buckets]]
+binding = "R2_BUCKET"
+bucket_name = "telemetry"
+preview_bucket_name = "telemetry-test"
+
+[vars]
+S3_BUCKET = "example"
+BACKEND = "r2"
+
+[env.production.vars]
+S3_BUCKET = "example"
+BACKEND = "s3"
+
+# The necessary secrets are:
+# - AWS_ACCESS_KEY_ID
+# - AWS_SECRET_ACCESS_KEY
+# Run `echo <VALUE> | wrangler secret put <NAME> --env production` for each of these
